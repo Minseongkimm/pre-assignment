@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     width: 20px;
     height: 20px;
-    @media (min-width: 600px) {
+    @media (min-width: 700px) {
       display: none;
     }
     &:hover {
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 const MenuList = styled.ul`
   display: flex;
   list-style: none;
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     display: none;
   }
 `;
@@ -49,7 +49,7 @@ const HiddenModal = styled.ul`
   list-style: none;
   box-shadow: 1px 2px 3px 0px #3b8ffd;
   border-radius: 10px;
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     display: none;
   }
   .closeIcon {
