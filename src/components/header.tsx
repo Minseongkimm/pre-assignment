@@ -2,11 +2,15 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineClose } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  .mainLogo {
+    text-decoration: none;
+  }
   .menuIcon {
     margin-top: 1rem;
     width: 20px;
@@ -75,9 +79,9 @@ const Header = () => {
   return (
     <>
       <Wrapper className="headerConatiner">
-        <section className="headerLogo">
+        <Link to="/" className="mainLogo">
           <Logo>TREVARI</Logo>
-        </section>
+        </Link>
         <nav className="headerList">
           <MenuList>
             <Menu>모든 클럽 보기</Menu>

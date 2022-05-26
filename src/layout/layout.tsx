@@ -1,4 +1,3 @@
-import Header from '../components/header';
 import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
@@ -10,12 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Layout = (props: { children: React.ReactNode }) => {
-  return (
-    <Wrapper>
-      <Header />
-      {props.children}
-    </Wrapper>
-  );
+  return <Wrapper>{props.children}</Wrapper>;
 };
 
 export default Layout;
