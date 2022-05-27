@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useIntersectionObserver from '../common/hooks';
 import { content } from '../common/constant';
+import Loader from '../components/Loader';
 
 const Wrapper = styled.div`
   margin-top: 60px;
@@ -30,20 +31,18 @@ const Main = () => {
       .then((res) => {
         return res;
       });
-
+    console.log('fetchcontent');
     setContents(response.data.slice(0, itemIndex + 20));
   };
 
-  console.log('con', contents);
-
-  useEffect(() => {
-    fetchContents();
-  }, []);
+  // console.log('content', contents);
+  // console.log('itemIndex', itemIndex);
 
   const getMoreItem = async () => {
     setIsLoaded(true);
-    setItemIndex((i) => i + 20);
+    console.log('getmoreItem');
     await fetchContents();
+    setItemIndex((i) => i + 20);
     setIsLoaded(false);
   };
 
@@ -52,11 +51,13 @@ const Main = () => {
     observer
   ) => {
     if (entry.isIntersecting && !isLoaded) {
+      console.log('로딩로딩');
       observer.unobserve(entry.target);
       await getMoreItem();
       observer.observe(entry.target);
     }
   };
+
   const { setTarget } = useIntersectionObserver({
     root: null,
     rootMargin: '0px',
@@ -71,7 +72,7 @@ const Main = () => {
         contents.map((content: content) => (
           <Card key={content.club.id} content={content} />
         ))}
-      <div ref={setTarget}>{isLoaded && <div>Loading..</div>}</div>
+      <div ref={setTarget}>{isLoaded && <Loader />}</div>
     </Wrapper>
   );
 };
